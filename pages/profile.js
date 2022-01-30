@@ -15,7 +15,8 @@ function Profile() {
   const { getNFTBalances } = useNFTBalances();
 
   const { token } = useMoralisWeb3Api();
-  const { account, logout, isAuthenticated, isAuthenticating } = useMoralis();
+  const { account, logout, isAuthenticated, isAuthenticating, Moralis } =
+    useMoralis();
   const { getBalances, data: objectBalance, isLoading } = useNativeBalance();
   const balance = objectBalance.formatted;
 
@@ -26,7 +27,6 @@ function Profile() {
   //Fetching NFTs
   useEffect(() => {
     getBalances({ params: { chain: "rinkeby" } });
-
     getNFTBalances({
       params: { chain: "rinkeby" },
       onComplete: () => {
