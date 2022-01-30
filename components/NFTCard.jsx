@@ -11,11 +11,7 @@ function NFTCard({ img, creator, title, id, price, coin, desc, lockWidth }) {
       <div className="relative h-60 w-auto mb-2 ">
         <Image
           className="rounded-md"
-          src={
-            img
-              ? img
-              : "https://i.gyazo.com/11eac8af8df5dd84ca017bcf832e7e9b.png"
-          }
+          src={img ? img : "0x2b9E91e6F05a518d17464b81be544aFE5F906498"}
           layout="fill"
           objectFit="cover"
           alt=""

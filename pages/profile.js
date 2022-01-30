@@ -7,7 +7,7 @@ import {
   useNFTBalances,
   useNativeBalance,
 } from "react-moralis";
-import { justNumbers, trunc } from "../components/functions";
+import { fixURL, trunc } from "../components/functions";
 import Navbar from "../components/Navbar";
 import NFTCard from "../components/NFTCard";
 function Profile() {
@@ -21,6 +21,7 @@ function Profile() {
 
   const [NFTs, setNFTs] = useState();
   const [NFTsLoading, setNFTsLoading] = useState(true);
+  const [NFTsError, setNFTsError] = useState(false);
 
   //Fetching NFTs
   useEffect(() => {
@@ -28,15 +29,16 @@ function Profile() {
 
     getNFTBalances({
       params: { chain: "rinkeby" },
+      onComplete: () => {
+        setNFTsError(false);
+      },
       onSuccess: (e) => {
         //Clone results.
+
         const results = [...e.result];
 
         //If metadata is null, then reSync and fetch for that metadata using the uri link.
-        const nullMetadatas = results.filter(
-          (nft) =>
-            !nft?.metadata || nft?.metadata === null || nft?.metadata == null
-        );
+        const nullMetadatas = results.filter((nft) => nft?.metadata === null);
 
         nullMetadatas?.map((nft) => {
           token?.reSyncMetadata({
@@ -56,6 +58,9 @@ function Profile() {
         console.log(finalData);
         setNFTs(finalData);
         setNFTsLoading(false);
+      },
+      throwOnError: () => {
+        setNFTsError(true);
       },
     });
   }, [account]);
@@ -77,9 +82,25 @@ function Profile() {
             </h2>
 
             <div className="inline-flex items-center text-right p-2 bg-gray-200 dark:bg-custom-lightgray ml-auto">
-              <h2 className="text-base inline-block uppercase sm:text-xl ml-auto">
-                {balance?.slice(0, -3)}
-              </h2>
+              {!balance?.length ? (
+                <div
+                  className={`relative w-6 h-6 mb-1 ml-2 ${
+                    NFTsError && "inline-block"
+                  }`}
+                >
+                  <Image
+                    src={"/images/Spinner.svg"}
+                    layout="fill"
+                    objectFit="contain"
+                    alt=""
+                  />
+                </div>
+              ) : (
+                <h2 className="text-base inline-block uppercase sm:text-xl ml-auto">
+                  {balance?.slice(0, -3)}
+                </h2>
+              )}
+
               <div className="relative w-6 h-6 mb-1 ml-2">
                 <Image
                   src={
@@ -105,7 +126,7 @@ function Profile() {
                 lockWidth={true}
                 key={token_id}
                 title={metadata?.name}
-                img={metadata?.image}
+                img={fixURL(metadata?.image)}
                 desc={metadata?.description}
               />
             ))

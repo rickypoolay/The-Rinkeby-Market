@@ -1,4 +1,4 @@
-import { MoralisProvider, useMoralis } from "react-moralis";
+import { MoralisProvider } from "react-moralis";
 import Init from "../components/init";
 import "../styles/globals.css";
 function MyApp({ Component, pageProps }) {

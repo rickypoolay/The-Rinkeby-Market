@@ -6,6 +6,8 @@ module.exports = {
       "downloads.coindesk.com",
       "lh3.googleusercontent.com",
       "i.gyazo.com",
+      "storage.opensea.io",
+      "ipfs.moralis.io",
     ],
   },
 };
