@@ -5,10 +5,6 @@ import NFTCard from "../components/NFTCard";
 import { NFTs } from "../Database/temp";
 
 function Explore() {
-  useEffect(() => {
-    localStorage.theme = "dark";
-  }, []);
-
   return (
     <div className="">
       <Navbar />

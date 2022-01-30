@@ -8,7 +8,7 @@ function Navbar() {
   return (
     <nav className="py-5 px-5 bg-gray-200 dark:bg-custom-lightgray flex justify-between items-center md:py-8">
       <h1
-        className="cursor-pointer text-2xl sm:text-3xl select-none border p-1"
+        className="cursor-pointer text-2xl sm:text-3xl select-none border p-1 border-custom-lightgray dark:border-white"
         onClick={() => router.push("/explore")}
       >
         The Rinkeby Market
