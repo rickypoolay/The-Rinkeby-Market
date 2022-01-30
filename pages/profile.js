@@ -1,4 +1,3 @@
-import axios from "axios";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
@@ -54,7 +53,7 @@ function Profile() {
           return nft;
         });
 
-        // console.log(finalData);
+        console.log(finalData);
         setNFTs(finalData);
         setNFTsLoading(false);
       },
@@ -100,7 +99,7 @@ function Profile() {
           Owned NFTs
         </h3>
         <div className="flex gap-x-5 overflow-x-auto overflow-hidden p-6 scrollbar">
-          {NFTsLoading == false &&
+          {(NFTsLoading == false) & (NFTs?.length > 0) ? (
             NFTs?.map(({ metadata, token_id }) => (
               <NFTCard
                 lockWidth={true}
@@ -109,7 +108,12 @@ function Profile() {
                 img={metadata?.image}
                 desc={metadata?.description}
               />
-            ))}
+            ))
+          ) : (
+            <p className="w-full text-center bg-gray-200 dark:bg-custom-lightgray p-5">
+              This wallet has no NFTs
+            </p>
+          )}
         </div>
 
         <div className="border border-gray-200 dark:border-custom-lightgray mt-6" />
