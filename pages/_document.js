@@ -1,5 +1,4 @@
 import Document, { Html, Head, Main, NextScript } from "next/document";
-import { useEffect, useState } from "react";
 
 class MyDocument extends Document {
   static async getInitialProps(ctx) {
@@ -9,21 +8,7 @@ class MyDocument extends Document {
 
   render() {
     return (
-      <Html
-        className={`${() => {
-          if (typeof window !== "undefined") {
-            if (
-              localStorage.getItem("theme") === "dark" ||
-              (!("theme" in localStorage) &&
-                window.matchMedia("(prefers-color-scheme: dark)").matches)
-            ) {
-              return "dark";
-            } else {
-              return "";
-            }
-          }
-        }}`}
-      >
+      <Html>
         <Head>
           <link rel="preconnect" href="https://fonts.googleapis.com" />
           <link

@@ -6,7 +6,7 @@ function LoginCard() {
   const router = useRouter();
   const { authenticate, authError } = useMoralis();
   return (
-    <div className="bg-custom-lightgray text-center p-5 max-w-[20rem] lg:p-10 lg:max-w-2xl lg:text-2xl">
+    <div className="bg-gray-200 dark:bg-custom-lightgray text-center p-5 max-w-[20rem] lg:p-10 lg:max-w-2xl lg:text-2xl">
       <h1 className="text-3xl mb-5 lg:text-5xl">NFT MARKETPLACE</h1>
       <p className="mb-5 text-xs lg:text-lg">
         NFT MARKETPlACE relies on MetaMask wallet. Sign in with a MetaMask

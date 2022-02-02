@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useMoralis, useNFTBalances } from "react-moralis";
 
-function Init({ Children }) {
+function Init() {
   const { isInitialized, isAuthenticated, isWeb3Enabled, enableWeb3 } =
     useMoralis();
 
@@ -9,8 +9,7 @@ function Init({ Children }) {
     if (isInitialized && isAuthenticated && !isWeb3Enabled) {
       enableWeb3();
     }
-  }, [isInitialized, isAuthenticated, isWeb3Enabled]);
-
+  }, [isInitialized, isAuthenticated, isWeb3Enabled, enableWeb3]);
   return <div></div>;
 }
 

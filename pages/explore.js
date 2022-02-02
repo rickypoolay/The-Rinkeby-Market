@@ -1,4 +1,5 @@
 import { FilterIcon } from "@heroicons/react/outline";
+import Head from "next/head";
 import { useEffect } from "react";
 import Navbar from "../components/Navbar";
 import NFTCard from "../components/NFTCard";
@@ -7,6 +8,15 @@ import { NFTs } from "../Database/temp";
 function Explore() {
   return (
     <div className="">
+      <Head>
+        <title>Explore | TRM</title>
+        <meta
+          name="this is a Rinkeby test site to view your NFTs and more."
+          content="Rinkeby Market"
+        />
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
+
       <Navbar />
       <section className="">
         <div className="flex items-center justify-between w-full mb-5">

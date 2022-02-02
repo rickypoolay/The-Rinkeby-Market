@@ -11,12 +11,13 @@ function NFTCard({ img, creator, title, id, price, coin, desc, lockWidth }) {
       <div className="relative h-60 w-auto mb-2 ">
         <Image
           className="rounded-md"
-          src={img ? img : "0x2b9E91e6F05a518d17464b81be544aFE5F906498"}
+          src={img ? img : "/images/Spinner.svg"}
           layout="fill"
           objectFit="cover"
           alt=""
         />
       </div>
+
       <div className="text-xs sm:text-base">
         {creator && <h3>{creator}</h3>}
         <p>{title}</p>
@@ -33,7 +34,11 @@ function NFTCard({ img, creator, title, id, price, coin, desc, lockWidth }) {
             />
           </div>
         </div>
-        {desc && <p className="text-sm">{trunc(0, 47, null, null, desc)}</p>}
+        {desc && (
+          <p className="text-sm break-words">
+            {trunc(0, 47, null, null, desc)}
+          </p>
+        )}
       </div>
     </div>
   );

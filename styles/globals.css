@@ -17,7 +17,6 @@
     @apply after:absolute after:h-[1px] after:bottom-0 after:w-0 hover:after:w-full after:left-1/2 after:hover:left-0 after:bg-custom-lightgray dark:after:bg-white after:transition-all after:duration-300 after:ease-in-out;
   }
 
-  /* Hide scrollbar for Chrome, Safari and Opera */
   .scrollbar::-webkit-scrollbar {
     @apply rounded-full h-3 p-1;
   }

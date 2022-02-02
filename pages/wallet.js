@@ -1,3 +1,4 @@
+import Head from "next/head";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
@@ -10,13 +11,13 @@ import {
 import { fixURL, trunc } from "../components/functions";
 import Navbar from "../components/Navbar";
 import NFTCard from "../components/NFTCard";
+
 function Profile() {
   const router = useRouter();
   const { getNFTBalances } = useNFTBalances();
 
   const { token } = useMoralisWeb3Api();
-  const { account, logout, isAuthenticated, isAuthenticating, Moralis } =
-    useMoralis();
+  const { account, logout } = useMoralis();
   const { getBalances, data: objectBalance, isLoading } = useNativeBalance();
   const balance = objectBalance.formatted;
 
@@ -34,7 +35,6 @@ function Profile() {
       },
       onSuccess: (e) => {
         //Clone results.
-
         const results = [...e.result];
 
         //If metadata is null, then reSync and fetch for that metadata using the uri link.
@@ -67,6 +67,15 @@ function Profile() {
 
   return (
     <div>
+      <Head>
+        <title>Wallet | TRM</title>
+        <meta
+          name="this is a Rinkeby test site to view your NFTs and more."
+          content="Rinkeby Market"
+        />
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
+
       <Navbar />
       <section>
         <div className="flex justify-between items-center mb-5">
